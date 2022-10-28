@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class ½Å°í°á°ú¹Ş±â {
+public class ì‹ ê³ ê²°ê³¼ë°›ê¸° {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -12,28 +12,29 @@ public class ½Å°í°á°ú¹Ş±â {
 	}
 
 	/**
+	 * @date 2022-10-28
 	 * 
-	 * @param id_list ÀÌ¿ëÀÚÀÇ ID°¡ ´ã±ä ¹®ÀÚ¿­ ¹è¿­
-	 * @param report  °¢ ÀÌ¿ëÀÚ°¡ ½Å°íÇÑ ÀÌ¿ëÀÚÀÇ ID Á¤º¸°¡ ´ã±ä ¹®ÀÚ¿­ ¹è¿­
-	 * @param k Á¤Áö ±âÁØÀÌ µÇ´Â ½Å°í È½¼ö 
+	 * @param id_list ì´ìš©ìì˜ IDê°€ ë‹´ê¸´ ë¬¸ìì—´ ë°°ì—´
+	 * @param report  ê° ì´ìš©ìê°€ ì‹ ê³ í•œ ì´ìš©ìì˜ ID ì •ë³´ê°€ ë‹´ê¸´ ë¬¸ìì—´ ë°°ì—´
+	 * @param k ì •ì§€ ê¸°ì¤€ì´ ë˜ëŠ” ì‹ ê³  íšŸìˆ˜ 
 	 * 
-	 * @return °¢ À¯Àúº°·Î Ã³¸® °á°ú ¸ŞÀÏÀ» ¹ŞÀº È½¼ö
+	 * @return ê° ìœ ì €ë³„ë¡œ ì²˜ë¦¬ ê²°ê³¼ ë©”ì¼ì„ ë°›ì€ íšŸìˆ˜
 	 */
 	public static int[] solution(String[] id_list, String[] report, int k) {
-        int reportedCount; // ½Å°í´çÇÑ È½¼ö
-        String user; // ÀÏ¹İ À¯Àú
-        String reportUser; // ½Å°íÇÑ À¯Àú
-        String reportedUser; // ½Å°í´çÇÑ À¯Àú
+        int reportedCount; // ì‹ ê³ ë‹¹í•œ íšŸìˆ˜
+        String user; // ì¼ë°˜ ìœ ì €
+        String reportUser; // ì‹ ê³ í•œ ìœ ì €
+        String reportedUser; // ì‹ ê³ ë‹¹í•œ ìœ ì €
         
-        int numberOfUsers = id_list.length; // À¯Àú ¼ö
+        int numberOfUsers = id_list.length; // ìœ ì € ìˆ˜
         
-        HashSet<String> reportedUserList = null; // Áßº¹µÇÁö ¾ÊÀº ½Å°í´çÇÑ À¯Àú ¸ñ·Ï
+        HashSet<String> reportedUserList = null; // ì¤‘ë³µë˜ì§€ ì•Šì€ ì‹ ê³ ë‹¹í•œ ìœ ì € ëª©ë¡
 
-        HashMap<String, HashSet<String>> reportUsers = new HashMap<>();// À¯Àú°¡ ½Å°íÇÑ À¯Àú¸ñ·Ï (key : userId, value : Set<String> reportedUserList)
-        HashMap<String, Integer> reportedUsersCount = new HashMap<>(); // À¯ÀúÀÇ ½Å°í´çÇÑ È½¼ö (key : userId, value : reportedCount)
+        HashMap<String, HashSet<String>> reportUsers = new HashMap<>();// ìœ ì €ê°€ ì‹ ê³ í•œ ìœ ì €ëª©ë¡ (key : userId, value : Set<String> reportedUserList)
+        HashMap<String, Integer> reportedUsersCount = new HashMap<>(); // ìœ ì €ì˜ ì‹ ê³ ë‹¹í•œ íšŸìˆ˜ (key : userId, value : reportedCount)
         
-        ArrayList<String> blockUsers = new ArrayList<>(); // Á¤ÁöµÈ À¯Àú ¸ñ·Ï
-		int[] answer = new int[numberOfUsers]; // °¢ À¯Àú°¡ ¹ŞÀº °á°ú ¸ŞÀÏ ¼ö
+        ArrayList<String> blockUsers = new ArrayList<>(); // ì •ì§€ëœ ìœ ì € ëª©ë¡
+		int[] answer = new int[numberOfUsers]; // ê° ìœ ì €ê°€ ë°›ì€ ê²°ê³¼ ë©”ì¼ ìˆ˜
 
         for(int i=0; i<numberOfUsers; i++) {
             reportedUsersCount.put(id_list[i], 0);
@@ -46,7 +47,7 @@ public class ½Å°í°á°ú¹Ş±â {
             for(int j=0; j<report.length; j++) {
                 reportUser = report[j].substring(0, report[j].indexOf(" "));
 
-                // 1. ½Å°í´çÇÑ À¯ÀúÀÇ ½Å°í´çÇÑ È½¼ö Update
+                // 1. ì‹ ê³ ë‹¹í•œ ìœ ì €ì˜ ì‹ ê³ ë‹¹í•œ íšŸìˆ˜ Update
                 if (user.equals(reportUser)) {
                     reportedUser = report[j].substring(report[j].indexOf(" ")+1);
                     reportedCount = reportedUserList.contains(reportedUser) == false ? reportedUsersCount.get(reportedUser) + 1 : reportedUsersCount.get(reportedUser);
@@ -56,18 +57,18 @@ public class ½Å°í°á°ú¹Ş±â {
                 }
             }
 
-            // 2. À¯Àú°¡ ½Å°íÇÑ À¯Àú ¸®½ºÆ® Update
+            // 2. ìœ ì €ê°€ ì‹ ê³ í•œ ìœ ì € ë¦¬ìŠ¤íŠ¸ Update
             reportUsers.put(user, reportedUserList);
         }
 
-        // 3. ½Å°í´çÇÑ È½¼ö°¡ k¹ø ÀÌ»óÀÎÁö È®ÀÎ
+        // 3. ì‹ ê³ ë‹¹í•œ íšŸìˆ˜ê°€ kë²ˆ ì´ìƒì¸ì§€ í™•ì¸
         for(int i=0; i<numberOfUsers; i++) {
             if(reportedUsersCount.get(id_list[i]) > k-1) {
                 blockUsers.add(id_list[i]);
             }
         }
 
-        // 4. °¢ À¯Àú°¡ ¹ŞÀº °á°ú ¸ŞÀÏ ¼ö Update
+        // 4. ê° ìœ ì €ê°€ ë°›ì€ ê²°ê³¼ ë©”ì¼ ìˆ˜ Update
         for (int i=0; i<numberOfUsers; i++) {
             for(int j=0; j<blockUsers.size(); j++) {
                 if(reportUsers.get(id_list[i]).contains(blockUsers.get(j))) {

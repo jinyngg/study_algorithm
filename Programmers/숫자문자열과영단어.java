@@ -8,7 +8,8 @@ public class 숫자문자열과영단어 {
     }
 
     /**
-     * @url 2022-10-26
+     * @date 2022-10-26
+     * 
      * 숫자문자열과영단어 lv.1
      * */
     public static int solution(String s) {

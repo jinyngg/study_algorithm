@@ -9,7 +9,7 @@ public class 짝수와홀수 {
     }
 
     /**
-     * @url 2022-10-25
+     * @date 2022-10-25
      * 짝수와 홀수 lv.1
      * */
     public static String solution(int num) {
