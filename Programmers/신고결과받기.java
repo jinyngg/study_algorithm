@@ -7,8 +7,12 @@ import java.util.HashSet;
 public class 신고결과받기 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+        // result = 2,1,1,0
+        String[] id_list = {"muzi", "frodo", "apeach", "neo"};
+        String[] report = {"muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"};
+        int k = 2;
 
+        System.out.println(solution(id_list, report, k));
 	}
 
 	/**
