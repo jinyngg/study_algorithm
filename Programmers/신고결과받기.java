@@ -1,6 +1,7 @@
 package Programmers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -12,7 +13,7 @@ public class 신고결과받기 {
         String[] report = {"muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"};
         int k = 2;
 
-        System.out.println(solution(id_list, report, k));
+        solution(id_list, report, k);
 	}
 
 	/**
@@ -81,6 +82,7 @@ public class 신고결과받기 {
             }
         }
 
+        System.out.println(Arrays.toString(answer));
         return answer;
     }
 }
