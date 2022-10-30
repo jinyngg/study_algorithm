@@ -16,11 +16,6 @@ public class 성격유형검사하기 {
 	 * @date 2022-10-29
 	 * 성격 유형 검사하기 lv.1
 	 *
-	 * R T
-	 * C F
-	 * J M
-	 * A N
-	 *
 	 * @param survey 질문마다 판단하는 지표를 담은 1차원 문자열 배열
 	 * @param choices 검사자가 각 질문마다 선택한 선택지를 담은 1차원 정수 배열
 	 *
