@@ -30,7 +30,8 @@ public class 성격유형검사하기 {
 
 		for(int i=0; i<survey.length; i++) {
 			int choice = choices[i];
-			Character type = choice < 5 ? survey[i].charAt(0) : survey[i].charAt(1);
+			// ScoreOfOption.NEITHER_DISAGREE_NOR_AGREE.getChoice() + 1 : 실제점수 0점 기준으로 작성
+			Character type = choice < ScoreOfOption.NEITHER_DISAGREE_NOR_AGREE.getChoice() + 1 ? survey[i].charAt(0) : survey[i].charAt(1);
 
 			ScoreOfOption scoreOfOption = ScoreOfOption.valueOfCode(choice);
 			realScore = scoreOfOption.getScore();
@@ -66,9 +67,17 @@ public class 성격유형검사하기 {
 		private String option;  // 선택지
 		private int choice;     // 점수
 		private int score;      // 실제 점수
+		
+		public String getOption() {
+			return option;
+		}
 
 		public int getScore() {
 			return score;
+		}
+		
+		public int getChoice() {
+			return choice;
 		}
 
 		public static ScoreOfOption valueOfCode(int ch) {
