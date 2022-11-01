@@ -4,11 +4,12 @@ public class 신규아이디추천 {
 
 	public static void main(String[] args) {
 		// result = "bat.y.abcdefghi"
-//		String new_id = "...!@BaT#*..y.abcdefghijklm";
+		String new_id1 = "...!@BaT#*..y.abcdefghijklm";
 		
 		// result = "aaa"
-		String new_id = "=.=";
-		solution(new_id);
+		String new_id2 = "=.=";
+		solution(new_id1);
+		solution(new_id2);
 	}
 	
 	/**
