@@ -6,10 +6,12 @@ import java.util.HashMap;
 public class 다트게임 {
 
 	public static void main(String[] args) {
-		String exam1 = "1S2D*3T	"; 	// result = 37
+		String exam1 = "1S2D*3T"; 	// result = 37
 		String exam2 = "1D2S#10S"; 	// result = 9
 		String exam3 = "1T2D3D#";	// result = -4
 		
+		solution(exam1);
+		solution(exam2);
 		solution(exam3);
 	}
 	
