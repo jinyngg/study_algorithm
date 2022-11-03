@@ -1,4 +1,4 @@
-package Programmers;
+package programmers;
 
 public class 신규아이디추천 {
 

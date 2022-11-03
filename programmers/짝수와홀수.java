@@ -1,4 +1,4 @@
-package Programmers;
+package programmers;
 
 public class 짝수와홀수 {
 
