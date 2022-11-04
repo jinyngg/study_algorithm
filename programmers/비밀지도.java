@@ -43,6 +43,7 @@ public class 비밀지도 {
         	answer[i] = map;
         }
         
+        System.out.println(Arrays.toString(answer));
         return answer;
     }
 }
