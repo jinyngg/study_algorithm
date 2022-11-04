@@ -1,9 +1,7 @@
 package programmers;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Arrays;
 
 public class 소수만들기 {
 
@@ -16,8 +14,6 @@ public class 소수만들기 {
 	/**
 	 * @date 2022-11-03
 	 * 
-	 * TODO 수정 필요
-	 * 
 	 * nums에 들어있는 숫자의 개수는 3개 이상 50개 이하
 	 * nums의 각 원소는 1 이상 1,000 이하의 자연수이며, 중복된 숫자가 들어있지 않습니다.
 	 * 
@@ -27,77 +23,26 @@ public class 소수만들기 {
 	public static int solution(int[] nums) {
 		
 		int answer = 0;
-        int countOfNumbers = nums.length;
-		boolean[] visited = new boolean[countOfNumbers];
 		
-		HashSet<Integer> sumOfNumbers = new HashSet<>();
-		sumOfNumbers = makeSumOfNumbers(nums, visited, 0, countOfNumbers, 3, sumOfNumbers);
+		// 오름차순 정렬
+		Arrays.sort(nums);
+		int maxNumber = nums[nums.length-3] + nums[nums.length-2] + nums[nums.length-1];
 		
-		ArrayList<Integer> numbers = new ArrayList<>();
-		ArrayList<Integer> primeNumbers = new ArrayList<>();
+		ArrayList<Integer> primeNumbers = getPrimeNuber(maxNumber);
 		
-		Iterator iter = sumOfNumbers.iterator(); 
-		while(iter.hasNext()){
-			numbers.add((Integer) iter.next());
-		}
-		
-		Collections.sort(numbers);
-		
-		primeNumbers = getPrimeNuber(numbers.get(numbers.size()-1));
-		
-		for(int i=0; i<numbers.size(); i++) {
-			answer = primeNumbers.contains(numbers.get(i)) == true ? answer + 1 : answer;
+		for(int i=0; i<nums.length; i++) {
+			int number = 0;
+			for(int j=i+1; j<nums.length; j++) {
+				for(int k=j+1; k<nums.length; k++) {
+					number = nums[i] + nums[j] + nums[k];
+					
+					answer = primeNumbers.contains(number) == true ? answer  + 1 : answer;
+				}
+			}
 		}
 		
 		System.out.println(answer);
         return answer;
-    }
-	
-	/**
-	 * 조합(https://bcp0109.tistory.com/15)
-	 * 
-	 * @param numbers 숫자들이 들어있는 배열
-	 * @param visited 방문체크
-	 * @param start nums[start] 부터 반복
-	 * @param n n개 중 r개 선택
-	 * @param r n개 중 r개 선택
-	 * 
-	 * @return n개 중 r개의 숫자들의 합이 담긴 Set
-	 */
-    public static HashSet<Integer> makeSumOfNumbers(int[] numbers, boolean[] visited, int start, int n, int r, HashSet<Integer> sumOfNumbers) {    	
-        if (r == 0) {
-        	int sumOfNumber = getSumOfNumbers(numbers, visited, n);
-        	sumOfNumbers.add(sumOfNumber);
-            return sumOfNumbers;
-        }
-
-        for (int i = start; i < n; i++) {
-            visited[i] = true;
-            makeSumOfNumbers(numbers, visited, i+1, n, r-1, sumOfNumbers);
-            visited[i] = false;
-        }
-        
-        return sumOfNumbers;
-    }
-	
-    /**
-     * 
-	 * @param numbers 숫자들이 들어있는 배열
-	 * @param visited 방문체크
-	 * @param n n개 중 r개 선택
-	 * 
-     * @return 방문체크 통과한 숫자들의 합
-     */
-    public static int getSumOfNumbers(int[] numbers, boolean[] visited, int n) {
-    	int sumOfNumber = 0;
-    	
-        for (int i = 0; i < n; i++) {
-            if (visited[i]) {
-            	sumOfNumber = sumOfNumber + numbers[i];
-            }
-        }
-        
-        return sumOfNumber;
     }
     
     /**
