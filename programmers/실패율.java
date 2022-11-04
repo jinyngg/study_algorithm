@@ -1,6 +1,8 @@
 package programmers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class 실패율 {
 
@@ -13,8 +15,12 @@ public class 실패율 {
 		int M = 4;
 		int[] stages2 = {4, 4, 4, 4 ,4};
 		
+		int K = 4;
+		int[] stages3 = {1, 1, 1, 1 ,1};
+		
 		solution(N, stages);
 		solution(M, stages2);
+		solution(K, stages3);
 	}
 	
 	/**
@@ -34,41 +40,52 @@ public class 실패율 {
 		
 		int[] answer = new int[N];
         
-		double[] rate = new double[N];
-		double users = stages.length;
+		double[] rate = new double[N];	// 실패율 배열
+		double users = stages.length;	// 유저의 수
 		
 		for (int i=1; i<=N; i++) {
+			if(users == 0) {
+				rate[i-1] = 0;
+				break;
+			}
+			
 			double failedUsers = 0;
 			
 			for(int j=0; j<stages.length; j++) {
 				if(i == stages[j]) {
-					failedUsers = failedUsers + 1;
+					failedUsers = failedUsers + 1;	// Stage가 증가함에 따라 실패한 유저수 변경
 				}
 			}
 			
-			rate[i-1] = failedUsers / users ;
-			users = users - failedUsers;
+			rate[i-1] = failedUsers / users ;		// 실패율 
+			users = users - failedUsers;			// 다음 Stage에 남은 유저수 변경
+			
 		}
 		
 		System.out.println(Arrays.toString(rate));
 		
+		// index : (stage-1), value : rate
+		ArrayList<Double> failure = new ArrayList<>();	
 		for(int i=0; i<N; i++) {
-			int maxStage = i+1;
-			double max = rate[i];
-			
+			failure.add(rate[i]);
+		}
+		
+		// 실패율 내림차순 정렬
+		Collections.sort(failure, Collections.reverseOrder());
+		
+		for(int i=0; i<N; i++) {
 			for(int j=0; j<N; j++) {
-				if(max < rate[j]) {
-					max = rate[j];
-					maxStage = j+1;
+				if(failure.get(i) == rate[j]) {
+					answer[i] = j+1;
+					rate[j] = -1;
+					break;
 				}
 			}
-			
-			answer[i] = maxStage;
-			rate[maxStage-1] = -1.0;
 		}
 		
 		System.out.println(Arrays.toString(answer));
+		
         return answer;
     }
-
+	
 }
