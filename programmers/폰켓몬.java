@@ -7,7 +7,7 @@ public class 폰켓몬 {
 	public static void main(String[] args) {
 		
 		int[] nums = {3,3,3,2,2,4};
-		System.out.println(solution(nums));
+		System.out.println(solution(nums)); 
 
 	}
 	
