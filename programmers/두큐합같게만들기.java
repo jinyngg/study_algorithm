@@ -6,20 +6,17 @@ import java.util.Queue;
 public class 두큐합같게만들기 {
 
 	public static void main(String[] args) {
+		
+		// result = 2
 		int[] queue1 = {3, 2, 7, 2};
 		int[] queue2 = {4, 6, 5, 1};
 		
-		// A = [3, 3, 3, 3], B = [3, 3, 21, 3] 일 경우, 9번이 걸림 횟수를 다시 생각해 볼 것 
+		// result = 9
+		int[] a1 = {3, 3, 3, 3};
+		int[] b1 = {3, 3, 21, 3};
 		
-		// 1번 28번 반례
-//		int[] arr1 = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 10 };
-//		int[] arr2 = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-		
-		// A = [3, 3, 3, 3], B = [3, 3, 21, 3] 일 경우, 9번이 걸림 횟수를 다시 생각해 볼 것 
-//		int[] a1 = {3, 3, 3, 3};
-//		int[] b1 = {3, 3, 21, 3};
-		
-		solution(queue1, queue2);
+		System.out.println(solution(queue1, queue2));
+		System.out.println(solution(a1, b1));
 
 	}
 	
