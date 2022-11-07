@@ -36,65 +36,63 @@ public class 두큐합같게만들기 {
 	 */
 	public static int solution(int[] queue1, int[] queue2) {
 		
-		long sum = 0;		// 모든 요소의 합
-		long half = 0;		// 모든 요소의 합 / 2
-		int max1 = 0;		// queue1의 값 중 가장 큰 값
-		int max2 = 0;		// queue2의 값 중 가장 큰 값
-		long sumQueue1 = 0;	// queue1의 요소의 합
-		long sumQueue2 = 0;	// queue2의 요소의 합
-		int answer = 0;		// return
+
+		long sum = 0;		
+		long half = 0;		
+		int maxNumberOfQueue1 = 0;		
+		int maxNumberOfQueue2 = 0;		
+		long sumOfQueue1 = 0;	
+		long sumOfQueue2 = 0;	
+		int answer = 0;		
 		
-		Queue<Integer> q1 = new LinkedList<>();	// Queue1
-		Queue<Integer> q2 = new LinkedList<>();	// Queue2
+		Queue<Integer> q1 = new LinkedList<>();	
+		Queue<Integer> q2 = new LinkedList<>();	
 		
 		for(int queue : queue1) {
 			q1.add(queue);
-			if(max1 < queue) {
-				max1 = queue;
+			if(maxNumberOfQueue1 < queue) {
+				maxNumberOfQueue1 = queue;
 			}
-			sumQueue1 = sumQueue1 + queue;
+			sumOfQueue1 = sumOfQueue1 + queue;
 			sum = sum + queue; 
 		}
 		
 		for(int queue : queue2) {
 			q2.add(queue);
-			if(max2 < queue) {
-				max2 = queue;
+			if(maxNumberOfQueue2 < queue) {
+				maxNumberOfQueue2 = queue;
 			}
-			sumQueue2 = sumQueue2 + queue;
+			sumOfQueue2 = sumOfQueue2 + queue;
 			sum = sum + queue; 
 		}
 		
 		half = sum / 2;
 		
-		// 범위에 대해서는 다시 알아봐야함 
 		for(int i=0; i<3*queue1.length; i++) {
-			if(sumQueue1 == sumQueue2) {
-				break;
+			if(sumOfQueue1 == sumOfQueue2) {
+				return answer;
 			}
 			
-			else if(sumQueue1 < sumQueue2) {
+			else if(sumOfQueue1 < sumOfQueue2) {
 				q1.add(q2.peek());
-				sumQueue2 = sumQueue2 - q2.peek();
-				sumQueue1 = sumQueue1 + q2.poll();
+				sumOfQueue2 = sumOfQueue2 - q2.peek();
+				sumOfQueue1 = sumOfQueue1 + q2.poll();
 				answer = answer + 1;
 			}
 			
-			else if(sumQueue1 > sumQueue2) {
-				q2.add(q2.peek());
-				sumQueue1 = sumQueue1 - q1.peek();
-				sumQueue2 = sumQueue2 + q1.poll();
+			else if(sumOfQueue1 > sumOfQueue2) {
+				q2.add(q1.peek());
+				sumOfQueue1 = sumOfQueue1 - q1.peek();
+				sumOfQueue2 = sumOfQueue2 + q1.poll();
 				answer = answer + 1;
 			}
 		}
 		
-		// SUM이 홀수일 경우, 가장 큰 요소의 값이 SUM/2보다 클 경우 return -1
-		if(sum%2 == 1 || half < max1 || half < max2) {
-			System.out.println("return -1");
+		if(sum%2 == 1 || half < maxNumberOfQueue1 || half < maxNumberOfQueue2) {
 			return -1;
 		}
 		
-        return answer;
+        return -1;
     }
 
 }
