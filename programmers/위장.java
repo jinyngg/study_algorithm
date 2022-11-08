@@ -6,7 +6,7 @@ public class 위장 {
 
 	public static void main(String[] args) {
 		String[][] clothes = {{"yellow_hat", "headgear"}, {"blue_sunglasses", "eyewear"}, {"green_turban", "headgear"}};
-		solution(clothes);
+		System.out.println(solution(clothes));
 	}
 
 	/**
