@@ -32,15 +32,6 @@ public class 롤케이크자르기 {
 		HashMap<Integer, Integer> left = new HashMap<>();
 		HashMap<Integer, Integer> right = new HashMap<>();
 		
-		HashSet<Integer> toppings = new HashSet<>();
-		for(int t : topping) {
-			toppings.add(t);
-		}
-		
-		if(toppings.size() == 1) {
-			return toppings.size() - 1;
-		}
-
 		for(int i=0; i<topping.length; i++) {
 			right.put(topping[i], right.getOrDefault(topping[i], 0) + 1);
 		}
