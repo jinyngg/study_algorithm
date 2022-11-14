@@ -13,7 +13,7 @@ public class 롤케이크자르기 {
 		
 		// result = 0
 		int[] ex2 = {1, 2, 3, 1, 4};
-		
+		 
 	}
 	
 	/**
