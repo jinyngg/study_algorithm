@@ -26,54 +26,30 @@ public class 롤케이크자르기 {
 	 * @return 롤케이크를 공평하게 자르는 방법의 수
 	 */
 	public static int solution(int[] topping) {
-		int half = 0;
-		int location = 0;
 		int answer = 0;
 		
 		// key : 토핑		value : 갯수
 		HashMap<Integer, Integer> left = new HashMap<>();
 		HashMap<Integer, Integer> right = new HashMap<>();
 		
-		HashSet<Integer> toppings = new HashSet<>();
-		for(int t : topping) {
-			toppings.add(t);
-		}
-		
-		if(toppings.size() == 1) {
-			return toppings.size() - 1;
-		}
-		
-		half = (toppings.size() % 2) == 1 ? (toppings.size() / 2) + 1 : (toppings.size() / 2);
-		
 		for(int i=0; i<topping.length; i++) {
-			left.put(topping[i], left.getOrDefault(topping[i], 0) + 1);
-			
-			if(left.size()==half) {
-				location = i+1;
-				break;
-			}
-		}
-		
-		for(int i=location; i<topping.length; i++) {
 			right.put(topping[i], right.getOrDefault(topping[i], 0) + 1);
 		}
-		
-		for(int i=location; i<topping.length; i++) {
+
+		for(int i=0; i<topping.length; i++) {
 			left.put(topping[i], left.getOrDefault(topping[i], 0) + 1);
-			right.put(topping[i], right.get(topping[i]) - 1);
-			
-			if(right.get(topping[i])==0) {
+			right.put(topping[i], right.getOrDefault(topping[i], 0) - 1);
+
+			if(right.get(topping[i]) == 0) {
 				right.remove(topping[i]);
 			}
-			
+
+			answer = left.size() == right.size() ? answer + 1 : answer;
 			if(left.size()>right.size()) {
 				break;
 			}
-			
-			answer = (left.size() == right.size()) == true ? answer + 1 : answer;
-			
 		}
-		
+
 		System.out.println("answer : " + answer);
         return answer;
     }
