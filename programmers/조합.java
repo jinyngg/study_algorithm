@@ -26,11 +26,13 @@ public class 조합 {
      * @param r n개 중 r개 선택
      */
     static void combination(int[] numbers, boolean[] visited, int start, int n, int r) {
+        // r == 0 : n개 중 r개 선택이 완료
         if (r == 0) {
             print(numbers, visited, n);
             return;
         }
 
+        // r개를 선택하기 위해 반복 
         for (int i = start; i < n; i++) {
             visited[i] = true;
             combination(numbers, visited, i + 1, n, r - 1);
