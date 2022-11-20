@@ -6,13 +6,13 @@ package programmers;
  */
 public class 조합 {
     public static void main(String[] args) {
-        int n = 4;
-        int[] arr = {1, 2, 3, 4};
+        int[] numbers = {1, 2, 3, 4};
+        int n = numbers.length;
         boolean[] visited = new boolean[n];
 
         for (int i = 1; i <= n; i++) {
             System.out.println("\n" + n + " 개 중에서 " + i + " 개 뽑기");
-            combination(arr, visited, 0, n, i);
+            backtrackingCombination(numbers, visited, 0, n, i);
         }
     }
 
@@ -25,17 +25,15 @@ public class 조합 {
      * @param n n개 중 r개 선택
      * @param r n개 중 r개 선택
      */
-    static void combination(int[] numbers, boolean[] visited, int start, int n, int r) {
-        // r == 0 : n개 중 r개 선택이 완료
+    static void backtrackingCombination(int[] numbers, boolean[] visited, int start, int n, int r) {
         if (r == 0) {
             print(numbers, visited, n);
             return;
         }
 
-        // r개를 선택하기 위해 반복 
         for (int i = start; i < n; i++) {
             visited[i] = true;
-            combination(numbers, visited, i + 1, n, r - 1);
+            backtrackingCombination(numbers, visited, i + 1, n, r - 1);
             visited[i] = false;
         }
     }
@@ -49,7 +47,7 @@ public class 조합 {
      */
     static void print(int[] numbers, boolean[] visited, int n) {
         for (int i = 0; i < n; i++) {
-            if (visited[i] == true) {
+            if (visited[i]) {
                 System.out.print(numbers[i] + " ");
             }
         }
