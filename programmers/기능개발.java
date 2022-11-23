@@ -12,7 +12,7 @@ public class 기능개발 {
         int[] progresses = {95, 90, 99, 99, 80, 99};
         int[] speeds = {1, 1, 1, 1, 1, 1};
 
-//        solution(progresses, speeds);
+        solution(progresses, speeds);
 
         // result = [2, 1];
         int[] a = {93, 30, 55};
@@ -44,8 +44,8 @@ public class 기능개발 {
             days[i] = (task % speeds[i] == 0) ? (task / speeds[i]) : (task / speeds[i]) + 1;
         }
 
-        // 남은 기간 구하기
-        System.out.println(Arrays.toString(days));
+        // 배포 가능까지 남은 기간
+        System.out.println("배포 가능까지 남은 기간 : " + Arrays.toString(days));
 
         int key = days[0];
         int count = 1;
