@@ -5,6 +5,12 @@ import java.util.PriorityQueue;
 public class 더맵게 {
 
 	public static void main(String[] args) {
+		
+		// result : 2
+		int[] scoville = {1, 2, 3, 9, 10, 12};
+		int K = 7;
+		
+		solution(scoville, K);
 
 	}
 	
@@ -17,8 +23,7 @@ public class 더맵게 {
 	 * @param K 스코빌 지수 기준점 
 	 * @return K 이상으로 만들기 위해 섞어야 하는 최소 횟수
 	 */
-	public int solution(int[] scoville, int K) {
-		
+	public static int solution(int[] scoville, int K) {
 		int first = 0;
 		int second = 0;
 		int mixed = 0;
@@ -26,6 +31,7 @@ public class 더맵게 {
 		int answer = 0;
 		
 		if(K==0) {
+			System.out.println("K=0");
 			return 0;
 		}
 		
@@ -36,6 +42,7 @@ public class 더맵게 {
 		
 		for(int sc : scoville) {
 			if(null == mixedScoville.peek()) {
+				System.out.println("mixedScoville.peek() == null	return -1");
 				return -1;
 			}
 			
@@ -44,10 +51,12 @@ public class 더맵게 {
 			}
 			
 			if(K > mixedScoville.peek()) {
+				first = mixedScoville.poll();
+				
 				if(null == mixedScoville.peek()) {
+					System.out.println("mixedScoville.peek() == null	return -1");
 					return -1;
 				}
-				first = mixedScoville.poll();
 				second = mixedScoville.poll();
 				
 				mixed = first + (second * 2);
@@ -55,7 +64,7 @@ public class 더맵게 {
 				answer = answer + 1;
 			}
 		}
-		
+		System.out.println(answer);
         return answer;
     }
 
