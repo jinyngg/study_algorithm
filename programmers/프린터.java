@@ -68,7 +68,7 @@ public class 프린터 {
 						break; 
 					}
 				}
-			}
+			} 
 			
 		}
 		
