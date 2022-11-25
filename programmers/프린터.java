@@ -65,7 +65,7 @@ public class 프린터 {
 						answer = answer + 1;
 						priorities[j] = -1;
 						priorityList.poll();
-						break;
+						break; 
 					}
 				}
 			}
