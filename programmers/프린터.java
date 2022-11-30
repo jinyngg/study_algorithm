@@ -1,9 +1,7 @@
 package programmers;
 
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class 프린터 {
 
@@ -34,50 +32,31 @@ public class 프린터 {
 	 */
 	public static int solution(int[] priorities, int location) {
 		
-		int answer = 1;
-		int priority = 0;
-		int document = 0;
-		int myDocument = priorities[location];
+		int answer = 0;
 		
 		PriorityQueue<Integer> priorityList = new PriorityQueue<>(Collections.reverseOrder());
 		for(int p : priorities) {
 			priorityList.add(p);
 		}
 		
-		if(location == 0 && myDocument == priorityList.peek()) {
-			return answer;
-		}
-		
-		Queue<Integer> printer = new LinkedList<>();
-		for(int p : priorities) {
-			printer.add(p);	
-		}
-		
-		int maxOfIterations = priorities.length % 2 == 1 ? priorities.length * ((priorities.length-1) / 2) : (priorities.length * ((priorities.length) / 2)) - (priorities.length / 2);
-		
-		for(int i=0; i<maxOfIterations; i++) {
-			priority = priorityList.peek();
-			document = printer.peek();
-			
-			if(myDocument == priority) {
-				for(int j=0; j<location; j++) {
-					if(priorities[j] == priority) {
-						answer = answer + 1;
-						priorities[j] = -1;
-						priorityList.poll();
-						break; 
-					}
-				}
-			} 
-			
-		}
-		
 		System.out.println(priorityList);
 		System.out.println(priorityList.peek());
-		System.out.println(printer);
-		System.out.println(printer.peek());
-//		System.out.println(maxOfIterations);
 		
+		while(!priorityList.isEmpty()) {
+			for(int i=0; i<priorities.length; i++) {
+				if(priorityList.peek() == priorities[i]) {
+					answer = answer + 1;
+					priorityList.poll();
+					
+					if(location==i) {
+						System.out.println("answer : " + answer);
+						return answer;
+					}
+				}
+			}
+		} 
+		
+		System.out.println("answer : " + answer);
         return answer;
     }
 
