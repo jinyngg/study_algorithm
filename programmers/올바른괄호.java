@@ -30,19 +30,16 @@ public class 올바른괄호 {
         }
 
         for(char c : characters) {
-            if(stack.isEmpty()) {
-                if(c != '(') {
+            if(c == '(') {
+                stack.push(c);
+            }
+            else {
+                if(stack.isEmpty()) {
                     return false;
                 }
-                stack.push(c);
-                continue;
-            }
 
-            if(stack.peek() == c) {
-                stack.push(c);
-                continue;
+                stack.pop();
             }
-            stack.pop();
         }
 
         if(stack.isEmpty()) {
